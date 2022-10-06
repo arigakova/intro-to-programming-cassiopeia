@@ -1,8 +1,11 @@
+gsap.to(".header", {y:10, ease: "bounce", duration:2})
+gsap.from(".link", {opacity:0, duration:4, stagger:1})
+
 var today = new Date();
 var thisYear = today.getFullYear();
 var footer = document.querySelector("footer");
 var copyright = document.createElement("p");
-copyright.innerHTML = `Anna © ${thisYear}`;
+copyright.innerHTML = `Anna Ryzhakova © ${thisYear}`;
 footer.appendChild(copyright);
 var skills = ["HTML", "CSS", "JavaScript"];
 var skillsSection = document.getElementById("skills");
