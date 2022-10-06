@@ -6,10 +6,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anna Ryzhakova</title>
+    <link rel="stylesheet" href="index.css">
+   
 </head>
 
 <body>
+    <div class="header">
+        <nav class="links">
+            <a class="link">About</a>
+            <a class="link">Experience</a>
+            <a class="link">Skills</a>
+            <a class="link">Connect</a>
+            <a class="link">Leave a message</a>
+        </nav>
+    </div>
+
     <h1>Anna Ryzhakova</h1>
+
     <section class="about">
         <h2>About</h2>
         <p>I am Code The Dream student now.</p>
@@ -33,23 +46,28 @@
         <a href="https://www.facebook.com/nurohka">FB page</a>
     </section>
     <section>
-        <h2>Leave a Message</h2>
-        <form name="leave_message">
-            <label>Name</label><br>
-            <input type="text" name="name" required="true"><br>
-            <label>Email</label><br>
-            <input type="email" name="email" required="true"><br>
-            <label>Message</label><br>
-            <textarea name="message" required="true"></textarea>
+
+        <div id="container">
+            <h2>Leave a Message</h2>
+            <form name="leave_message">
+                <label>Name</label><br>
+                <input type="text" name="name" required="true"><br>
+                <label>Email</label><br>
+                <input type="email" name="email" required="true"><br>
+                <label>Message</label><br>
+                <textarea name="message" required="true"></textarea>
                 <label></label><br>
-            <button type="submit">Submit</button>
-        </form>
+                <button type="submit">Submit</button>
+            </form>
     </section>
+    </div>
     <section id="messages">
         <h2>Messages</h2>
         <ul></ul>
     </section>
     <footer></footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
     <script src="index.js"></script>
 </body>
+
 </html>
