@@ -1,5 +1,5 @@
-gsap.to(".header", {y:10, ease: "bounce", duration:2})
-gsap.from(".link", {opacity:0, duration:4, stagger:1})
+gsap.to(".header", {y:10, ease: "bounce", duration:0.5})
+gsap.from(".link-animated", {opacity:0, duration:0.5, stagger:1})
 
 var today = new Date();
 var thisYear = today.getFullYear();
@@ -10,9 +10,11 @@ footer.appendChild(copyright);
 var skills = ["HTML", "CSS", "JavaScript"];
 var skillsSection = document.getElementById("skills");
 var skillsList = skillsSection.querySelector("ul");
+skillsList.classList.add("my-skill-list")
 for (let i = 0; i < 3; i++) {
     var skill = document.createElement("li");
     skill.innerText = skills[i];
+    skill.classList.add("my-skill-list-item")
     skillsList.appendChild(skill);
 }
 
