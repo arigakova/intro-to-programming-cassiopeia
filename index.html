@@ -7,39 +7,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anna Ryzhakova</title>
     <link rel="stylesheet" href="index.css">
-   
+
 </head>
 
 <body>
-    <div class="header">
-        <nav class="links">
-            <a class="link">About</a>
-            <a class="link">Experience</a>
-            <a class="link">Skills</a>
-            <a class="link">Connect</a>
-            <a class="link">Leave a message</a>
-        </nav>
-    </div>
 
-    <h1>Anna Ryzhakova</h1>
+    <nav class="links">
+        <a class="link start">Anna Ryzhakova</a>
+        <a href="#about" class="link-animated">About</a>
+        <a href="#experience" class="link-animated">Experience</a>
+        <a href="#skills" class="link-animated">Skills</a>
+        <a href="#connect" class="link-animated">Connect</a>
+        <a href="#contact" class="link-animated">Contact</a>
+    </nav>
 
-    <section class="about">
+    <section id="about">
         <h2>About</h2>
-        <p>I am Code The Dream student now.</p>
-        <p>I learn Java Script.</p>
+        <div class="my-section-content">
+            <p>I am Code The Dream student now.</p>
+            <p>I learn Java Script.</p>
+        </div>
     </section>
-    <section class="experience">
+    <section id="experience">
         <h2>Experience</h2>
-        <ul>
-            <li>
-                I have a certificate from the completion of courses in HTML and CSS
-                there are also small sites made as part of the course
-            </li>
-        </ul>
+        <div class="my-section-content">
+            <p>I have a certificate from the completion of courses:</p>
+            <div class="one"><span>HTML</span></div>
+            <div class="two">CSS</div>
+            <div class="three">Small sites made as part of the courses</div>
+        </div>
     </section>
     <section id="skills">
         <h2>Skills</h2>
-        <ul></ul>
+        <div class="my-section-content">
+            <ul></ul>
+        </div>
     </section>
 
     <section id="projects">
@@ -48,28 +50,36 @@
     </section>
     
     <section class="connect">
+    <section id="connect">
         <h2>Connect</h2>
-        <a href="https://www.facebook.com/nurohka">FB page</a>
+        <div class="my-section-content">
+            <a href="https://github.com/arigakova" target="_blank" title="GitHub Page" class="link">
+                <svg height="32" aria-hidden="true" viewBox="0 0 16 16" version="1.1" width="32" data-view-component="true" class="octicon octicon-mark-github v-align-middle">
+                    <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+                </svg>
+                GitHub page
+            </a>    
+        </div>
     </section>
-    <section>
-
-        <div id="container">
+    <section id="contact">
             <h2>Leave a Message</h2>
-            <form name="leave_message">
-                <label>Name</label><br>
-                <input type="text" name="name" required="true"><br>
-                <label>Email</label><br>
-                <input type="email" name="email" required="true"><br>
-                <label>Message</label><br>
-                <textarea name="message" required="true"></textarea>
-                <label></label><br>
-                <button type="submit">Submit</button>
-            </form>
+            <div class="my-section-content">
+                <form name="leave_message" id="container">
+                    <label class="my-label" for="name">Name</label>
+                    <input type="text" id="name" required="true" class="my-input"/>
+                    <label for="email" class="my-label">Email</label>
+                    <input type="email" id="email" required="true" class="my-input"/>
+                    <label for="message" class="my-label">Message</label>
+                    <textarea id="message" required="true" class="my-input"></textarea>
+                    <button type="submit" class="my-submit-button">Submit</button>
+                </form>
+            </div>
     </section>
-    </div>
     <section id="messages">
         <h2>Messages</h2>
-        <ul></ul>
+        <div class="my-section-content">
+            <ul></ul>
+        </div>
     </section>
     <footer></footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.2/gsap.min.js"></script>
