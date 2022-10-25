@@ -71,9 +71,7 @@ button {
 }
 
 @media screen and (min-width: 500px) {
-    body {
-       
-    }
+   
 
     #container {
         display: flex;
