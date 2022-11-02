@@ -1,5 +1,5 @@
-gsap.to(".header", {y:10, ease: "bounce", duration:0.5})
-gsap.from(".link-animated", {opacity:0, duration:0.5, stagger:1})
+gsap.to(".header", { y: 10, ease: "bounce", duration: 0.5 })
+gsap.from(".link-animated", { opacity: 0, duration: 0.5, stagger: 1 })
 
 var today = new Date();
 var thisYear = today.getFullYear();
@@ -48,3 +48,33 @@ messageForm.addEventListener("submit", (event) => {
     messageList.appendChild(newMessage);
     event.target.reset();
 });
+
+
+function githubRequestCallback() {
+    var repositories = JSON.parse(this.response)
+    console.log(repositories)
+    var projectSection = document.getElementById("projects")
+    var projectList = projectSection.querySelector("ul")
+    projectList.classList.add("my-project-list")
+    for (let i = 0; i < repositories.length; i++) {
+        var project = document.createElement("li")
+        // project.classList.add("my-project-list-item")
+        project.innerHTML = `
+            <a href="${repositories[i].html_url}" target="_blank" title="${repositories[i].name}" class="link">
+            ${repositories[i].name}
+            </a>
+        `
+        projectList.appendChild(project)
+    }
+}
+
+var githubRequest = new XMLHttpRequest();
+githubRequest.open("GET", "https://api.github.com/users/arigakova/repos")
+githubRequest.addEventListener("load", githubRequestCallback)
+githubRequest.send()
+
+
+
+
+
+
