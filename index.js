@@ -49,29 +49,40 @@ messageForm.addEventListener("submit", (event) => {
     event.target.reset();
 });
 
+var projectSection = document.getElementById("projects")
+var projectList = projectSection.querySelector("ul")
+projectList.classList.add("my-project-list")
 
-function githubRequestCallback() {
-    var repositories = JSON.parse(this.response)
-    console.log(repositories)
-    var projectSection = document.getElementById("projects")
-    var projectList = projectSection.querySelector("ul")
-    projectList.classList.add("my-project-list")
-    for (let i = 0; i < repositories.length; i++) {
+fetch("https://api.github.com/users/arigakova/repos")
+    .then((response) => response.json())
+    .then(afterResponse)
+    .catch(errorHandler)
+
+function errorHandler(error) { alert(error) }
+
+function afterResponse(response) {
+    for (let i = 0; i < response.length; i++) {
         var project = document.createElement("li")
-        // project.classList.add("my-project-list-item")
         project.innerHTML = `
-            <a href="${repositories[i].html_url}" target="_blank" title="${repositories[i].name}" class="link">
-            ${repositories[i].name}
-            </a>
-        `
-        projectList.appendChild(project)
+            <a href="${response[i].html_url}" target="_blank" title="${response[i].name}" class="link">
+            ${response[i].name}
+            </a>`
+        var details = document.createElement("ul")
+        var description = document.createElement("li")
+        description.innerHTML = response[i].description
+        details.appendChild(description);
+        var date = document.createElement("li")
+        date.innerHTML = new Date(response[i].created_at).toDateString()
+        details.appendChild(date)
+        project.appendChild(details)
+        if (i === 0) console.log(response[i])
+        project.classList.add("projects")
+        projectSection.appendChild(project)
+
     }
 }
 
-var githubRequest = new XMLHttpRequest();
-githubRequest.open("GET", "https://api.github.com/users/arigakova/repos")
-githubRequest.addEventListener("load", githubRequestCallback)
-githubRequest.send()
+
 
 
 
