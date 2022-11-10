@@ -1,10 +1,16 @@
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 :root {
     --text-primary-color: #012e4a;
-    font-size: 20px;
+    --text-nav-color: #012e4a;
+    --text-font-family: "Inter", sans-serif;
+    --background-color: #e8ede7;
+    --background-darker-color: #d7dad6;
+    font-size: 16px;
 }
 
 body {
@@ -16,46 +22,110 @@ body {
 form {
     display: inline-flex;
     flex-direction: column;
-    margin-top: 0em;
 }
 
-.links {
+@media screen and (max-width: 767px) {
+    .menu--hide-on-mobile {
+        display: none !important;
+    }
+}
+
+.list--remove-bullets {
+    list-style-type: none;
+}
+
+.list {
     display: flex;
-    justify-content: flex-end;
-    background-color: #036280;
-    padding: 20px;
+    align-items: center;
+    padding-left: 0px;
 }
 
-.link, .link-animated {
+.list--skill-item {
+    border-radius: 3px;
+    border: 2px solid #012e4a;
+    color: #012e4a;
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
+
+.list--messages {
+    flex-direction: column;
+    align-items: start;
+}
+
+.list--message-item:not(:last-child) {
+    margin-bottom: 5px;
+}
+
+.list--message-item > *:not(:last-child) {
+    margin-right: 5px;
+}
+
+.container {
+    padding: 1rem 0;
+    margin: 0 auto;
+    max-width: 1024px;
+    width: 80vw;
+}
+
+.nav {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header,
+.footer {
+    background-color: #e8ede7;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+footer {
+    display: flex;
+    background-color: var(--background-darker-color);
+    color: (--text-primary-color);
+    margin-top: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--text-primary-color);
+}
+
+.link-animated {
+    text-decoration: none;
     color: var(--text-primary-color);
     padding: 10px;
-    text-decoration: none;
-}
-
-.my-link-decor {
-    text-decoration: none;
 }
 
 .link-animated:hover {
     background-color: #81bece;
 }
 
-.start {
-    margin-right: auto;
-    color: #e8ede7;
-    font-family: "Times New Roman", serif;
-    font-size: 30px;
+.my-link-decor {
+    text-decoration: none;
+}
+
+.page-name {
+    font-size: 25px;
 }
 
 h2,
 p,
 li {
-    margin: 0px 20px 20px 20px;
-    font-family: "Times New Roman", serif;
+    font-family: var(--text-font-family);
 }
 
 h2 {
-    color: #036280;
+    color: var(--text-primary-color);
+    font-size: 1.5em;
+    font-family: var(--text-font-family);
+    font-weight: 600;
+    margin-bottom: 20px;
 }
 
 .one,
@@ -64,13 +134,12 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #81bece;
+    background-color: var(--background-darker-color);
     margin-bottom: 15px;
-    width: 400px;
+    width: 100%;
     height: 50px;
     color: var(--text-primary-color);
     text-align: center;
-    border-radius: 20px;
 }
 
 .main {
@@ -80,52 +149,25 @@ h2 {
     font-size: 16px;
 }
 
-.my-skill-list, .my-project-list {
-    display: flex;
-    justify-content: left;
-    list-style-type: none;
-    padding-inline-start: 0px;
-}
-
-.my-skill-list-item {
-    border-radius: 3px;
-    border: 2px solid #012e4a;
-    color: #012e4a;
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    margin-bottom: 0.5rem;
-}
-
-footer {
-    display: flex;
-    justify-content: center;
-    background-color: #036280;
-    color: #e8ede7;
-    margin-top: 20px;
-}
-
-#container {
+#message-form {
     display: flex;
     flex-direction: column;
-    /* margin-right: auto; */
-    background-color: #81bece;
+    background-color: var(--background-color);
     color: #036280;
-    padding: 20px;
-    border: none;
-    border-radius: 40px;
     max-width: 350px;
-    padding: 25px;
 }
 
 input,
 textarea,
 label {
-    padding: 5px;
-    border-radius: 10px;
-    border-style: none;
-    /* width: 300px; */
-    /* max-width: 300px; */
     min-width: 300px;
+}
+
+input,
+textarea {
+    padding: 5px;
+    border-style: solid;
+    border-color: var(--text-primary-color);
 }
 
 .my-label {
@@ -138,37 +180,24 @@ label {
 }
 
 button {
-    background-color: #81bece;
-    color: #036280;
-    border-style: dotted;
-    padding: 10px;
-    border-radius: 10px;
-    margin-top: 10px;
+    background-color: var(--background-darker-color);
+    color: var(--text-primary-color);
+    border-style: solid;
 }
 
-@media screen and (min-width: 769px) {
-   
+.my-submit-button {
+    margin-left: auto;
+    padding: 10px 20px 10px 20px;
 }
 
-@media screen and (max-width: 1025px) {
-    .links, .link-animated  {
-        display: flex;
-        flex: 1;
-        
-        justify-content: space-between;
-    }
+section {
+    margin-bottom: 20px;
 }
 
 .my-section-content {
     display: flex;
     flex-direction: column;
-    margin-left: 15px;
 }
-
-.my-submit-button {
-    margin-left: auto;
-}
-
 
 .my-project-list-item {
     border-radius: 3px;
