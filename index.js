@@ -1,20 +1,18 @@
-gsap.to(".header", { y: 10, ease: "bounce", duration: 0.5 })
-gsap.from(".link-animated", { opacity: 0, duration: 0.5, stagger: 1 })
-
 var today = new Date();
 var thisYear = today.getFullYear();
-var footer = document.querySelector("footer");
 var copyright = document.createElement("p");
 copyright.innerHTML = `Anna Ryzhakova © ${thisYear}`;
-footer.appendChild(copyright);
+var myContacts = document.getElementById("footer-elements");
+myContacts.prepend(copyright);
+
 var skills = ["HTML", "CSS", "JavaScript"];
 var skillsSection = document.getElementById("skills");
 var skillsList = skillsSection.querySelector("ul");
-skillsList.classList.add("my-skill-list")
+skillsList.classList.add("list")
 for (let i = 0; i < 3; i++) {
     var skill = document.createElement("li");
     skill.innerText = skills[i];
-    skill.classList.add("my-skill-list-item")
+    skill.classList.add("list--skill-item")
     skillsList.appendChild(skill);
 }
 
@@ -28,15 +26,8 @@ messageForm.addEventListener("submit", (event) => {
     var messageSection = document.getElementById("messages");
     var messageList = messageSection.getElementsByTagName("ul")[0];
     var newMessage = document.createElement("li");
-    newMessage.innerHTML =
-        '<a href="mailto:' +
-        email +
-        '">' +
-        name +
-        "</a>" +
-        "<span>" +
-        message +
-        "</span>";
+    newMessage.innerHTML = '<a href="mailto:' + email + '">' + name + "</a>" + "<span>" + message + "</span>";
+    newMessage.classList.add("list--message-item")
     var removeButton = document.createElement("button");
     removeButton.innerText = "remove";
     removeButton.type = "button";
@@ -51,41 +42,23 @@ messageForm.addEventListener("submit", (event) => {
 
 var projectSection = document.getElementById("projects")
 var projectList = projectSection.querySelector("ul")
-projectList.classList.add("my-project-list")
+projectList.classList.add("list")
+projectList.classList.add("list--remove-bullets")
 
 fetch("https://api.github.com/users/arigakova/repos")
     .then((response) => response.json())
-    .then(afterResponse)
+    .then(renderMyRepos)
     .catch(errorHandler)
 
 function errorHandler(error) { alert(error) }
 
-function afterResponse(response) {
-    for (let i = 0; i < response.length; i++) {
+function renderMyRepos(repositories) {
+    for (let i = 0; i < repositories.length; i++) {
         var project = document.createElement("li")
         project.innerHTML = `
-            <a href="${response[i].html_url}" target="_blank" title="${response[i].name}" class="link">
-            ${response[i].name}
+            <a href="${repositories[i].html_url}" target="_blank" title="${repositories[i].name}" class="link link-animated">
+            ${repositories[i].name}
             </a>`
-        var details = document.createElement("ul")
-        var description = document.createElement("li")
-        description.innerHTML = response[i].description
-        details.appendChild(description);
-        var date = document.createElement("li")
-        date.innerHTML = new Date(response[i].created_at).toDateString()
-        details.appendChild(date)
-        project.appendChild(details)
-        if (i === 0) console.log(response[i])
-        project.classList.add("projects")
-        projectSection.appendChild(project)
-
+        projectList.appendChild(project)
     }
 }
-
-
-
-
-
-
-
-
